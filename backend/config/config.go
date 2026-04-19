@@ -75,6 +75,7 @@ type EmailConfig struct {
 type AppConfig struct {
 	BaseURL     string
 	Environment string
+	Country     string // "BF" or "CD" - determines which country this deployment serves
 }
 
 func (d DatabaseConfig) DSN() string {
@@ -133,6 +134,7 @@ func Load() *Config {
 		App: AppConfig{
 			BaseURL:     getEnv("APP_BASE_URL", "http://localhost:8080"),
 			Environment: getEnv("APP_ENV", "development"),
+			Country:     getEnv("APP_COUNTRY", "BF"), // BF or CD
 		},
 	}
 }

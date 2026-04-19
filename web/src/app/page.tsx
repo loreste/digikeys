@@ -1,5 +1,12 @@
 import Link from 'next/link';
 
+const COUNTRY = process.env.NEXT_PUBLIC_COUNTRY || 'BF';
+const isBF = COUNTRY === 'BF';
+const countryName = isBF ? 'Burkina Faso' : 'République Démocratique du Congo';
+const flag = isBF ? '🇧🇫' : '🇨🇩';
+const motto = isBF ? 'Une carte pour tous, tous pour le Burkina' : 'Une carte pour tous, tous pour le Congo';
+const fundName = isBF ? 'Fonds de Solidarité Burkinabè (FSB)' : 'Fonds de Solidarité Congolais (FSC)';
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-emerald-900 to-emerald-800">
@@ -12,11 +19,11 @@ export default function Home() {
       </nav>
 
       <section className="max-w-5xl mx-auto px-8 py-20 text-center">
-        <div className="text-6xl mb-6">🇧🇫</div>
+        <div className="text-6xl mb-6">{flag}</div>
         <h2 className="text-5xl font-bold text-white mb-6">Carte Consulaire<br />Biométrique</h2>
         <p className="text-xl text-emerald-200 mb-10 max-w-2xl mx-auto">
           Plus qu&apos;une carte consulaire, un véritable outil au service du développement
-          du Burkina Faso par sa diaspora. Une carte pour tous, tous pour le Burkina.
+          {isBF ? ' du Burkina Faso par sa diaspora' : ' de la RD Congo par sa diaspora'}. {motto}.
         </p>
         <div className="flex justify-center gap-4">
           <Link href="/verify" className="bg-amber-600 text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-amber-700">Vérifier une Carte</Link>
@@ -45,7 +52,7 @@ export default function Home() {
       </section>
 
       <footer className="text-center py-8 text-emerald-300 text-sm">
-        DIGIKEYS - Carte Consulaire du Burkina Faso - Fonds de Solidarité Burkinabè (FSB)
+        DIGIKEYS - Carte Consulaire - {countryName} - {fundName}
       </footer>
     </main>
   );

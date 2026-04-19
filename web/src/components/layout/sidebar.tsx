@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { useAuthStore } from '@/stores/auth-store';
+import { useCountryStore } from '@/stores/country-store';
 
 const menuItems: Record<string, { label: string; href: string; icon: string }[]> = {
   super_admin: [
@@ -37,6 +38,7 @@ const menuItems: Record<string, { label: string; href: string; icon: string }[]>
 export function Sidebar() {
   const pathname = usePathname();
   const user = useAuthStore((s) => s.user);
+  const { country } = useCountryStore();
   const role = user?.role || 'readonly';
   const items = menuItems[role] || menuItems.verifier;
 
@@ -56,7 +58,7 @@ export function Sidebar() {
         ))}
       </nav>
       <div className="p-4 border-t border-emerald-800">
-        <p className="text-xs text-emerald-500">v1.0.0 - Burkina Faso 🇧🇫</p>
+        <p className="text-xs text-emerald-500">v1.0.0 - {country.flag} {country.name}</p>
       </div>
     </aside>
   );

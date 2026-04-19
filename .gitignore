@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Build
+bin/
+dist/
+.next/
+out/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+
+# Go
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+coverage.out
+
+# Biometric data (NEVER commit)
+biometric-data/
+*.fingerprint
+*.bio
+
+# MinIO
+minio-data/
+
+# Logs
+*.log
+logs/
+
+# Mobile
+mobile/android/.gradle/
+mobile/android/app/build/
+mobile/ios/Pods/
+mobile/ios/build/

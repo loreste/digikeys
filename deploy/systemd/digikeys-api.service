@@ -1,0 +1,26 @@
+[Unit]
+Description=DIGIKEYS Carte Consulaire API
+After=network.target postgresql.service
+Wants=postgresql.service
+
+[Service]
+Type=simple
+User=digikeys
+Group=digikeys
+WorkingDirectory=/opt/digikeys
+ExecStart=/opt/digikeys/bin/server serve
+EnvironmentFile=/opt/digikeys/.env
+Restart=on-failure
+RestartSec=5s
+
+ProtectSystem=strict
+NoNewPrivileges=true
+PrivateTmp=true
+ReadWritePaths=/opt/digikeys/data
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=digikeys-api
+
+[Install]
+WantedBy=multi-user.target
